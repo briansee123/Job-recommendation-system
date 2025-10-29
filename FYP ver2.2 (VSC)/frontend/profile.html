@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Partner - My Profile</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: linear-gradient(120deg, #aeefff 0%, #fceabb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem; /* increased base font size */
+        }
+        .profile-container {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            max-width: 900px; /* increased from 700px */
+            width: 100%;
+            padding: 64px 56px 56px 56px; /* increased padding */
+            margin: 40px 0;
+            text-align: center;
+        }
+        .profile-title {
+            font-size: 2.5rem; /* bigger */
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            color: #4a90e2;
+        }
+        .profile-desc {
+            color: #555;
+            font-size: 1.3rem; /* bigger */
+            margin-bottom: 18px;
+        }
+        .profile-info {
+            background: #fdfad6;
+            border-radius: 10px;
+            padding: 28px; /* more padding */
+            margin-bottom: 18px;
+            text-align: left;
+            font-size: 1.2rem; /* bigger */
+        }
+        .profile-info b {
+            color: #4a90e2;
+        }
+        .resume-upload {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+        .resume-upload label {
+            font-weight: 600;
+            color: #222;
+        }
+        .resume-status {
+            font-size: 1.1rem; /* bigger */
+            color: #888;
+            margin-left: 8px;
+        }
+        .test-history {
+            background: #fffbe6;
+            border-radius: 8px;
+            padding: 20px; /* more padding */
+            margin-bottom: 18px;
+            font-size: 1.15rem; /* bigger */
+            text-align: left;
+        }
+        .test-history-title {
+            font-weight: 600;
+            color: #4a90e2;
+            margin-bottom: 6px;
+            font-size: 1.25rem; /* bigger */
+        }
+        .back-btn {
+            width: 100%;
+            padding: 18px 0; /* more padding */
+            border: none;
+            border-radius: 8px;
+            background: #4a90e2;
+            color: #fff;
+            font-size: 1.3rem; /* bigger */
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 2px 6px rgba(74,144,226,0.09);
+            transition: background 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-title">Job Partner! <span class="emoji">🌴🌞</span></div>
+        <div class="profile-desc">Your AI-powered guide to the perfect career path</div>
+        <h2 style="color:#4a90e2; font-size:1.3rem; margin-bottom:16px;">My Profile</h2>
+        <div class="profile-info">
+            <div><b>Email:</b> <span id="email">test</span></div>
+            <div><b>Username:</b> <span id="username">test</span></div>
+            <div class="resume-upload">
+                <label for="resume">Resume:</label>
+                <span class="resume-status" id="resume-status">(not uploaded)</span>
+                <input type="file" id="resume" style="margin-top:8px;">
+            </div>
+            <div><b>MBTI:</b> <span id="mbti">ESFP</span></div>
+        </div>
+        <div class="test-history">
+            <div class="test-history-title">Test History:</div>
+            <ul id="test-list" style="padding-left:18px; margin:0;">
+                <li>30/07/2025, 5:05:42 am: <b>Business Analyst</b> [MBTI: ESFP]</li>
+                <li>30/07/2025, 5:05:01 am: <b>Business Analyst</b> [MBTI: ESFP]</li>
+            </ul>
+        </div>
+        <div class="test-history">
+            <div class="test-history-title">Job Apply History:</div>
+            <ul id="job-apply-list" style="padding-left:18px; margin:0;">
+                <li>30/07/2025, 5:10:12 am: <b>Software Engineer</b> at Google Inc.</li>
+                <li>30/07/2025, 5:11:45 am: <b>Designer</b> at IDEO</li>
+            </ul>
+        </div>
+        <button class="back-btn" onclick="window.location.href='homepage.html'">← Back to Home</button>
+    </div>
+    <script>
+        // Resume upload status
+        document.getElementById('resume').addEventListener('change', function() {
+            const status = document.getElementById('resume-status');
+            if (this.files.length > 0) {
+                status.textContent = '(uploaded: ' + this.files[0].name + ')';
+            } else {
+                status.textContent = '(not uploaded)';
+            }
+        });
+    </script>
+</body>
+</html>

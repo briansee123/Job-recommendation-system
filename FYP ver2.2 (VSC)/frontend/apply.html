@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Partner - Apply Job</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: linear-gradient(120deg, #aeefff 0%, #fceabb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+        .apply-container {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            max-width: 900px; /* increased from 400px */
+            width: 100%;
+            padding: 64px 56px 56px 56px; /* increased padding */
+            margin: 40px 0;
+            text-align: center;
+        }
+        .apply-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            color: #4a90e2;
+        }
+        .apply-job {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #f76b1c;
+            margin-bottom: 10px;
+        }
+        .apply-slogan {
+            color: #555;
+            font-size: 1.3rem;
+            margin-bottom: 18px;
+        }
+        .apply-form {
+            text-align: left;
+            margin-bottom: 18px;
+            font-size: 1.2rem;
+        }
+        .apply-form label {
+            font-weight: 600;
+            color: #222;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 1.15rem;
+        }
+        .apply-form input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fdfad6;
+            font-size: 1.1rem;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 18px 0;
+            border: none;
+            border-radius: 8px;
+            background: #4a90e2;
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 2px 6px rgba(74,144,226,0.09);
+            transition: background 0.2s;
+        }
+        .back-btn {
+            width: 100%;
+            padding: 16px 0;
+            border: none;
+            border-radius: 8px;
+            background: #f76b1c;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="apply-container">
+        <div class="apply-title">Job Partner! <span class="emoji">🌴🌞</span></div>
+        <div class="apply-job" id="job-title"></div>
+        <div class="apply-slogan">"Find your dream job and grow your career with us!"</div>
+        <form class="apply-form" id="apply-form">
+            <label for="username">Your Name:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="phone">Your Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+            <label for="resume">Attach your resume:</label>
+            <input type="file" id="resume" name="resume" required>
+            <button type="submit" class="submit-btn">Submit Application</button>
+        </form>
+        <button class="back-btn" onclick="window.location.href='homepage.html'">← Back to Homepage</button>
+    </div>
+    <script>
+        // Get job from URL
+        const params = new URLSearchParams(window.location.search);
+        const job = params.get('job') || 'Job';
+        document.getElementById('job-title').textContent = 'Apply for ' + decodeURIComponent(job);
+
+        // Redirect to success page on submit
+        document.getElementById('apply-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            window.location.href = 'apply-success.html?job=' + encodeURIComponent(job);
+        });
+    </script>
+</body>
+</html>
+</html>

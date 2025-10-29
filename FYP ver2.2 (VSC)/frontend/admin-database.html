@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Database - Job Partner</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: linear-gradient(120deg, #aeefff 0%, #fceabb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+        }
+        .db-container {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            max-width: 1000px;
+            width: 100%;
+            padding: 48px 40px 40px 40px;
+            margin: 40px 0;
+        }
+        .db-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #4a90e2;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .db-section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #f76b1c;
+            margin-top: 32px;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 24px;
+        }
+        th, td {
+            border: 1px solid #eee;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background: #fdfad6;
+            color: #4a90e2;
+        }
+        tr:nth-child(even) {
+            background: #f7f7f7;
+        }
+        .back-btn {
+            width: 100%;
+            padding: 18px 0;
+            border: none;
+            border-radius: 8px;
+            background: #4a90e2;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 2px 6px rgba(74,144,226,0.09);
+            transition: background 0.2s;
+        }
+        .delete-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            background: #e74c3c;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .delete-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="db-container">
+        <div class="db-title">Admin Database</div>
+        <div class="db-section-title">Registered Users</div>
+        <table id="user-table">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>MBTI</th>
+                    <th>Resume Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>user@email.com</td>
+                    <td>user</td>
+                    <td>ESFP</td>
+                    <td>Uploaded</td>
+                    <td><button class="delete-btn" onclick="deleteRow(this)">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>admin@email.com</td>
+                    <td>admin</td>
+                    <td>INTJ</td>
+                    <td>Not Uploaded</td>
+                    <td><button class="delete-btn" disabled style="opacity:0.5;cursor:not-allowed;">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="db-section-title">Job Applications</div>
+        <table id="job-table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Job Applied</th>
+                    <th>Date & Time</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>user</td>
+                    <td>Software Engineer at Google Inc.</td>
+                    <td>30/07/2025, 5:10:12 am</td>
+                    <td><button class="delete-btn" onclick="deleteRow(this)">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>user</td>
+                    <td>Designer at IDEO</td>
+                    <td>30/07/2025, 5:11:45 am</td>
+                    <td><button class="delete-btn" onclick="deleteRow(this)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="back-btn" onclick="window.location.href='admin-homepage.html'">← Back to Admin Home</button>
+    </div>
+    <script>
+        function deleteRow(btn) {
+            const row = btn.closest('tr');
+            row.parentNode.removeChild(row);
+        }
+    </script>
+</body>
+</html>
