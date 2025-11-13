@@ -204,21 +204,20 @@
     </div>
   </div>
 
-  <script>
-    document.getElementById('login-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-      const usernameInput = document.getElementById('username').value.trim();
-      const passwordInput = document.getElementById('password').value.trim();
-      const errorMessage = document.getElementById('error-message');
+<script>
+  document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const usernameInput = document.getElementById('username').value.trim();
+    const passwordInput = document.getElementById('password').value.trim();
+    const errorMessage = document.getElementById('error-message');
 
-      if (usernameInput === 'admin' && passwordInput === 'admin') {
-        window.location.href = 'admin-homepage.html';
-      } else if (usernameInput === 'user' && passwordInput === 'user') {
-        window.location.href = 'homepage.html';
-      } else {
-        errorMessage.style.display = 'block';
-      }
-    });
-  </script>
+    if (usernameInput === 'user' && passwordInput === '123123123') {
+      window.location.href = 'homepage.html';
+    } else {
+      errorMessage.style.display = 'block';
+    }
+  });
+</script>
 </body>
 </html>
