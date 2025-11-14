@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -464,6 +463,69 @@
             font-weight: 600;
         }
 
+        /* Job Apply List Section */
+        .job-apply-list {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .apply-item {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .apply-info {
+            flex: 1;
+        }
+
+        .apply-job-name {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 1.1rem;
+        }
+
+        .apply-company {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        .apply-date {
+            color: #888;
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
+
+        .erase-btn {
+            padding: 8px 16px;
+            background: #e53935;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .erase-btn:hover {
+            background: #d32f2f;
+        }
+
+        .no-applications {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
+
         /* AI Assistant */
         .ai-assistant {
             position: fixed;
@@ -782,6 +844,12 @@
             </div>
         </div>
 
+        <!-- Job Apply List Section -->
+        <div class="job-apply-list">
+            <h2 class="section-title">📋 Job Application History</h2>
+            <div id="applyList"></div>
+        </div>
+
         <!-- Back Button -->
         <div class="back-button">
             <a href="homepage.html" class="back-btn">🏠 Back to Homepage</a>
@@ -925,6 +993,57 @@
                 chatBody.scrollTop = chatBody.scrollHeight;
             }
         }
+
+        // Job Apply List
+        const applyListKey = 'appliedJobs';
+        
+        function renderApplyList() {
+            const list = document.getElementById('applyList');
+            list.innerHTML = '';
+            
+            const applications = JSON.parse(localStorage.getItem(applyListKey)) || [];
+            
+            if (applications.length === 0) {
+                list.innerHTML = '<p class="no-applications">No job applications yet</p>';
+                return;
+            }
+            
+            applications.forEach((app, index) => {
+                const item = document.createElement('div');
+                item.className = 'apply-item';
+                item.innerHTML = `
+                    <div class="apply-info">
+                        <div class="apply-job-name">${app.jobName}</div>
+                        <div class="apply-company">at ${app.company}</div>
+                        <div class="apply-date">Applied on ${app.date}</div>
+                    </div>
+                    <button class="erase-btn" onclick="eraseApplication(${index})">Erase</button>
+                `;
+                list.appendChild(item);
+            });
+        }
+
+        function eraseApplication(index) {
+            if (confirm('Are you sure you want to erase this application?')) {
+                let applications = JSON.parse(localStorage.getItem(applyListKey)) || [];
+                applications.splice(index, 1);
+                localStorage.setItem(applyListKey, JSON.stringify(applications));
+                renderApplyList();
+            }
+        }
+
+        // Initialize with sample data if none exists
+        if (!localStorage.getItem(applyListKey)) {
+            const sampleApps = [
+                { jobName: 'Senior Frontend Developer', company: 'TechGrow Solutions', date: 'November 14, 2025' },
+                { jobName: 'Marketing Manager', company: 'Green Innovations', date: 'November 12, 2025' },
+                { jobName: 'UX Designer', company: 'Design Corp', date: 'November 10, 2025' }
+            ];
+            localStorage.setItem(applyListKey, JSON.stringify(sampleApps));
+        }
+
+        // Render on load
+        window.onload = renderApplyList;
     </script>
 </body>
 </html>
